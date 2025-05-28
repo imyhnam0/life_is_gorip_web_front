@@ -1,0 +1,69 @@
+/* Homepage.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+}
+
+.homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.homepage-hero {
+  text-align: center;
+  max-width: 800px;
+  padding: 40px;
+}
+
+.homepage-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #00ffff;
+  text-shadow: 2px 2px #000;
+}
+
+.homepage-welcome {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.homepage-card {
+  flex: 1;
+  min-width: 220px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #00ffff55;
+  padding: 20px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+}
+
+.homepage-card:hover {
+  background: rgba(0, 255, 255, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.3);
+}
+
+.homepage-card h2 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.homepage-card p {
+  font-size: 0.95rem;
+  color: #ddd;
+}

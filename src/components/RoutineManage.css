@@ -1,0 +1,141 @@
+/* 전체 컨테이너 */
+.routine-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px;
+  background: linear-gradient(to bottom right, #00ffff, #e0ffff); /* cyan → 하늘 */
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+  color: #003366;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* 타이틀 */
+.routine-title {
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #005577;
+}
+
+/* 루틴 파트 */
+.routine-part {
+  margin-bottom: 25px;
+  border-left: 4px solid #0099cc;
+  padding-left: 15px;
+}
+
+.routine-part-title {
+  font-size: 22px;
+  color: #007fa3;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.routine-part-title:hover {
+  color: #003f5c;
+}
+.selected-part {
+  color: #003f5c;
+  font-weight: bold;
+}
+
+/* 루틴 운동 */
+.routine-workout {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.routine-workout-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #005577;
+  cursor: pointer;
+}
+.routine-workout-name:hover {
+  color: #001f3f;
+}
+
+/* 세트 */
+.routine-sets {
+  margin-left: 30px;
+  margin-top: 8px;
+}
+.routine-set-item {
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+/* 캘린더 박스 */
+.calendar-box {
+  margin-top: 50px;
+  padding: 25px;
+  border-radius: 16px;
+  background-color: #f0fefe;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.calendar-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #006699;
+}
+
+.custom-calendar {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #dff9ff;
+  border-radius: 10px;
+  color: #003f5c;
+}
+
+.react-calendar__tile {
+  background: #e0f7fa;
+  color: #003f5c;
+}
+.react-calendar__tile--active {
+  background: #00cccc !important;
+  color: #fff !important;
+}
+.highlighted-day {
+  background-color: #99f0ff !important;
+  border-radius: 10px;
+  color: #003f5c !important;
+  font-weight: bold;
+}
+
+/* 날짜 & 기록 */
+.calendar-selected-date {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #444;
+}
+
+.calendar-record {
+  background: #ccf6ff;
+  padding: 20px;
+  margin-top: 20px;
+  border-left: 5px solid #00cccc;
+  border-radius: 12px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #003344;
+}
+.calendar-record strong {
+  color: #007fa3;
+}
+.calendar-no-record {
+  margin-top: 15px;
+  color: #666;
+  font-size: 14px;
+}
+
+.exercise-log {
+  margin-top: 10px;
+}
+.set-log {
+  font-size: 14px;
+  color: #333;
+}
