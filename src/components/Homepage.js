@@ -4,10 +4,23 @@ import "./Homepage.css";
 
 import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
+
 
 const Homepage = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("userId"); // 로컬스토리지 정리
+      navigate("/login"); // 로그인 페이지로 이동
+    } catch (error) {
+      console.error("로그아웃 실패:", error);
+    }
+  };
+  
 
   useEffect(() => {
     const fetchUserName = async () => {
@@ -30,6 +43,9 @@ const Homepage = () => {
 
   return (
     <div className="homepage">
+      <div className="logout-button-container">
+        <button className="logout-button" onClick={handleLogout}>로그아웃</button>
+      </div>
       <div className="homepage-hero">
         <h1 className="homepage-title">🏋️‍♂️ LIFE IS GORIP</h1>
         <p className="homepage-welcome">{name && `환영합니다, ${name}님!`}</p>

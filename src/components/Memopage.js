@@ -1,3 +1,4 @@
+import { debounce } from "lodash";
 import React, { useState, useEffect } from "react";
 import "./Memopage.css";
 
@@ -8,10 +9,25 @@ const Memopage = () => {
   const [addingPage, setAddingPage] = useState(false);
   const [newPageTitle, setNewPageTitle] = useState("");
 
+  // 🔧 debounce 저장 함수
+  const saveContent = async (userId, title, content) => {
+    try {
+      await fetch("http://localhost:8080/api/pages/update", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, title, content }),
+      });
+      console.log("자동 저장 완료");
+    } catch (err) {
+      console.error("자동 저장 실패:", err);
+    }
+  };
+
+  const debouncedSave = debounce(saveContent, 500); // 0.5초 후 저장
+
   useEffect(() => {
     const fetchPages = async () => {
-      const userId = localStorage.getItem("userId"); 
-      console.log("Fetching pages for userId:", userId);
+      const userId = localStorage.getItem("userId");
 
       const res = await fetch(`http://localhost:8080/api/pages?userId=${userId}`);
       const data = await res.json();
@@ -24,29 +40,33 @@ const Memopage = () => {
 
       setPages(titles);
       setPageContents(contents);
-      setSelectedPage(titles[0] || ""); 
+      setSelectedPage(titles[0] || "");
     };
 
     fetchPages();
   }, []);
 
   const handleChange = (e) => {
-    setPageContents({ ...pageContents, [selectedPage]: e.target.value });
+    const newContent = e.target.value;
+    setPageContents({ ...pageContents, [selectedPage]: newContent });
+
+    const userId = localStorage.getItem("userId");
+    debouncedSave(userId, selectedPage, newContent);
   };
 
   const handleAddPage = async () => {
     const title = newPageTitle.trim();
     if (!title || pages.includes(title)) return;
-  
+
     const userId = localStorage.getItem("userId");
-  
+
     try {
       await fetch("http://localhost:8080/api/pages", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId, title })
       });
-  
+
       const updated = [...pages, title];
       setPages(updated);
       setSelectedPage(title);
@@ -56,7 +76,6 @@ const Memopage = () => {
       console.error("페이지 저장 실패:", err);
     }
   };
-  
 
   return (
     <div className="memo-container">

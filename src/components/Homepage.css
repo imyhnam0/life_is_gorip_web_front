@@ -67,3 +67,25 @@ body {
   font-size: 0.95rem;
   color: #ddd;
 }
+
+.logout-button-container {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.logout-button {
+  background-color: #ff4d4f;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #e04344;
+}
